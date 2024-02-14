@@ -55,3 +55,12 @@ p {
     height:150px;
     width:150px;
 }
+.heading1{
+    font-style: italic;
+    font-size: xx-large;
+}
+.para{
+    font-style: normal;
+    font-size: large;
+    color: black;
+}
