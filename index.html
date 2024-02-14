@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+       <form method="post" action="https://script.google.com/macros/s/AKfycbyobvsFiedmDV092pjK-xuu0F29m5APXYKAf0wMaQZFnmEurI4Cz194x12Ji07L5dSu/exec" onsubmit="return validateForm() && showSuccess()">
+                <h2 style="color:white;">Fill the Form</h2>
+                <input type="text" name="your-name" id="your-name" placeholder="Name" class="form-control">
+                <input type="tel" name="your-number" id="your-number" placeholder="Contact" class="form-control">
+                <input type="email" name="your-email" id="your-email" placeholder="Email" class="form-control">
+                <!-- Other form fields... -->
+                <div class="mb-3">
+                    <label for="location" style="color: white;">Location</label>
+                    <select id="location" name="your-address" class="form-control">
+                        <option value="Active">Select</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Warangal">Warangal</option>
+                    </select>
+                </div>
+                <textarea class="form-control" name="message" rows="3" placeholder="Your Message"></textarea>
+                <p style="color:yellow;">Feel Free to call: 8919527376</p>
+                <input type="submit" value="Submit" id="submit">
+                <p id="error-message" style="color:red;"></p>
+                <p id="success-message"></p>
+            </form>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function validateForm() {
+            var name = document.getElementById('your-name').value;
+            var number = document.getElementById('your-number').value;
+            var email = document.getElementById('your-email').value;
+
+            if (name === "" || number === "" || email === "") {
+                document.getElementById('error-message').innerText = 'Please fill all fields.';
+                return false;
+            }
+
+            if (!/^[a-zA-Z\s]+$/.test(name)) {
+                document.getElementById('error-message').innerText = 'Name must contain only letters and spaces.';
+                return false;
+            }
+
+            if (!/^\d{10}$/.test(number)) {
+                document.getElementById('error-message').innerText = 'Number must be 10 digits.';
+                return false;
+            }
+
+            if (!/^[a-zA-Z0-9._-]+@gmail\.com$/.test(email)) {
+                document.getElementById('error-message').innerText = 'Email must be a valid Gmail address.';
+                return false;
+            }
+
+            // If all validations pass, clear error message and return true
+            document.getElementById('error-message').innerText = '';
+            return true;
+        }
+
+        function showSuccess() {
+            document.getElementById('success-message').innerText = 'Submitted successfully!';
+            setTimeout(function () {
+                window.location.href = 'success-page.html';
+            }, 2000);
+            return false;
+        }
+    </script>
+</body>
+</html>
