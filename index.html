@@ -45,12 +45,8 @@
         function validateForm() {
             var name = document.getElementById('your-name').value;
             var number = document.getElementById('your-number').value;
-            var email = document.getElementById('your-email').value;
-
-            if (name === "" || number === "" || email === "") {
-                document.getElementById('error-message').innerText = 'Please fill all fields.';
-                return false;
-            }
+            
+            
 
             if (!/^[a-zA-Z\s]+$/.test(name)) {
                 document.getElementById('error-message').innerText = 'Name must contain only letters and spaces.';
