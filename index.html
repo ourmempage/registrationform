@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="card">
-       <form method="post" action="https://script.google.com/macros/s/AKfycbyobvsFiedmDV092pjK-xuu0F29m5APXYKAf0wMaQZFnmEurI4Cz194x12Ji07L5dSu/exec" onsubmit="return validateForm() && showSuccess()">
+       <form method="post" action="https://script.google.com/macros/s/AKfycbyobvsFiedmDV092pjK-xuu0F29m5APXYKAf0wMaQZFnmEurI4Cz194x12Ji07L5dSu/exec" onsubmit="return validateForm() && submitForm()">
                 <h2 style="color:white;">Fill the Form</h2>
                 <input type="text" name="your-name" id="your-name" placeholder="Name" class="form-control">
                 <input type="tel" name="your-number" id="your-number" placeholder="Contact" class="form-control">
@@ -60,11 +60,18 @@
             return true;
         }
 
+        function submitForm() {
+            showSuccess();
+            // You can add logic here to handle the form submission to Google Sheets if needed
+            // For simplicity, I'm assuming the Google Sheets submission is handled by the provided action URL
+            return true; // Allow the form to be submitted
+        }
+
         function showSuccess() {
-            document.getElementById('success-message').innerText = 'Submitted successfully!';
+            document.getElementById('success-message').innerHTML = 'Submitted successfully!...>';
             setTimeout(function () {
                 window.location.href = 'success-page.html';
-            }, 2000);
+            }, 3000);
             return false;
         }
     </script>
