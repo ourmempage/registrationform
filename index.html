@@ -7,80 +7,66 @@
 </head>
 <body>
     <div class="card">
-       <form method="post" action="https://script.google.com/macros/s/AKfycbyobvsFiedmDV092pjK-xuu0F29m5APXYKAf0wMaQZFnmEurI4Cz194x12Ji07L5dSu/exec" onsubmit="return validateForm() && submitForm()">
-                <h2 style="color:white;">Registration</h2>
-                <input type="text" name="your-name" id="your-name" placeholder="Name" class="form-control">
-                <input type="tel" name="your-number" id="your-number" placeholder="Contact" class="form-control">
-                <input type="email" name="your-email" id="your-email" placeholder="Email" class="form-control">
-                <!-- Other form fields... -->
-           <div class="mb-3">
-                    <label for="Domain" style="color: white;">Domain</label>
-                    <select id="domain" name="your-domain" class="form-control">
-                        <option value="Select">Select</option>
-                        <option value="Block chain">Block Chain</option>
-                        <option value="Embedded">Embedded</option>
-                        <option value="Devops">Devops</option>
-                        <option value="AI & ML">AI & ML</option>
-                        
-                        
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="location" style="color: white;">Location</label>
-                    <select id="location" name="your-address" class="form-control">
-                        
-                        <option value="Hyderabad">Hyderabad</option>
-                        
-                    </select>
-                </div>
-                <textarea class="form-control" name="message" rows="3" placeholder="Your Message"></textarea>
-                <p style="color:yellow;">Feel Free to call: 8919527376</p>
-                <input type="submit" value="Submit" id="submit">
-                <p id="error-message" style="color:red;"></p>
-                <p id="success-message"></p>
-            </form>
+        <form id="myForm">
+            <h2 style="color:white;">Registration</h2>
+            <input type="text" name="your-name" id="your-name" placeholder="Name" class="form-control">
+            <input type="tel" name="your-number" id="your-number" placeholder="Contact" class="form-control">
+            <input type="email" name="your-email" id="your-email" placeholder="Email" class="form-control">
+            <!-- Other form fields... -->
+            <div class="mb-3">
+                <label for="Domain" style="color: white;">Domain</label>
+                <select id="domain" name="your-domain" class="form-control">
+                    <option value="Select">Select</option>
+                    <option value="Block chain">Block Chain</option>
+                    <option value="Embedded">Embedded</option>
+                    <option value="Devops">Devops</option>
+                    <option value="AI & ML">AI & ML</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="location" style="color: white;">Location</label>
+                <select id="location" name="your-address" class="form-control">
+                    <option value="Hyderabad">Hyderabad</option>
+                </select>
+            </div>
+            <textarea class="form-control" name="message" rows="3" placeholder="Your Message"></textarea>
+            <p style="color:yellow;">Feel Free to call: 8977055534</p>
+            <input type="submit" value="Submit" id="submit">
+            <p id="error-message" style="color:red;"></p>
+            <p id="success-message"></p>
+        </form>
     </div>
-    <script src="script.js"></script>
     <script>
+        function showSuccessAlert() {
+            alert('Our team will reach out, thanks for the details.');
+        }
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://script.google.com/macros/s/AKfycbyobvsFiedmDV092pjK-xuu0F29m5APXYKAf0wMaQZFnmEurI4Cz194x12Ji07L5dSu/exec", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    showSuccessAlert();
+                }
+            };
+            if (!validateForm()) {
+                showErrorAlert();
+                return;
+            }
+            xhr.send(formData);
+        });
         function validateForm() {
             var name = document.getElementById('your-name').value;
             var number = document.getElementById('your-number').value;
-            
-            
-
-            if (!/^[a-zA-Z\s]+$/.test(name)) {
-                document.getElementById('error-message').innerText = 'Name must contain only letters and spaces.';
+            var email = document.getElementById('your-email').value;
+            if (name === "" || number === "" || email === "") {
                 return false;
             }
-
-            if (!/^\d{10}$/.test(number)) {
-                document.getElementById('error-message').innerText = 'Number must be 10 digits.';
-                return false;
-            }
-
-            if (!/^[a-zA-Z0-9._-]+@gmail\.com$/.test(email)) {
-                document.getElementById('error-message').innerText = 'Email must be a valid Gmail address.';
-                return false;
-            }
-
-            // If all validations pass, clear error message and return true
-            document.getElementById('error-message').innerText = '';
             return true;
         }
-
-        function submitForm() {
-            showSuccess();
-            // You can add logic here to handle the form submission to Google Sheets if needed
-            // For simplicity, I'm assuming the Google Sheets submission is handled by the provided action URL
-            return true; // Allow the form to be submitted
-        }
-
-        function showSuccess() {
-            document.getElementById('success-message').innerHTML = 'Submitted successfully!...>';
-            setTimeout(function () {
-                window.location.href = 'success-page.html';
-            }, 3000);
-            return false;
+        function showErrorAlert() {
+            alert('Please fill out all fields.');
         }
     </script>
 </body>
