@@ -1,7 +1,7 @@
 body {
     margin: 50px 0 0 0;
     padding: 0;
-    background-image: url('https://res.cloudinary.com/dekavagme/image/upload/v1707973638/WhatsApp_Image_2024-02-15_at_10.35.49_f48e23f5_l9tshf.jpg');
+    background-image: url('https://res.cloudinary.com/dekavagme/image/upload/v1707977801/WhatsApp_Image_2024-02-15_at_11.46.00_787d3eb7_hiukqq.jpg');
     background-size: cover;
     /* background-color:orange; */
     background-position: top center;
@@ -12,6 +12,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .card {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 10px;
@@ -21,9 +22,10 @@ body {
     text-align: center;
     max-width: 400px;
     margin-top: 80px;
-    background-color: #003B5B;
+    background-color: #003b5b;
     height: 50%;
 }
+
 .form-control {
     width: 100%;
     padding: 10px;
@@ -32,6 +34,7 @@ body {
     border-radius: 5px;
     box-sizing: border-box;
 }
+
 #submit {
     border: none;
     background-color: rgb(10, 216, 27);
@@ -42,10 +45,13 @@ body {
     cursor: pointer;
     font-size: 18px;
 }
+
 p {
     margin-top: 10px;
     color: #555;
 }
+
+
 .pay-img{
     height:150px;
     width:150px;
@@ -58,4 +64,23 @@ p {
     font-style: normal;
     color: black;
     font-size: large;
+}
+.custom-alert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    color:black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.custom-alert p {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
 }
