@@ -36,38 +36,11 @@
             <p id="success-message"></p>
         </form>
     </div>
-    <script>
-        function showSuccessAlert() {
-            alert('Our team will reach out, thanks for the details.');
-        }
-        document.getElementById("myForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            var formData = new FormData(this);
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://script.google.com/macros/s/AKfycbyobvsFiedmDV092pjK-xuu0F29m5APXYKAf0wMaQZFnmEurI4Cz194x12Ji07L5dSu/exec", true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    showSuccessAlert();
-                }
-            };
-            if (!validateForm()) {
-                showErrorAlert();
-                return;
-            }
-            xhr.send(formData);
-        });
-        function validateForm() {
-            var name = document.getElementById('your-name').value;
-            var number = document.getElementById('your-number').value;
-            var email = document.getElementById('your-email').value;
-            if (name === "" || number === "" || email === "") {
-                return false;
-            }
-            return true;
-        }
-        function showErrorAlert() {
-            alert('Please fill out all fields.');
-        }
-    </script>
+
+    <div id="customAlert" class="custom-alert">
+        <p id="alertText"></p>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
